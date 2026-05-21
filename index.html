@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ben Leal Const y - Invitación</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top, rgba(255,215,120,0.18), transparent 30%),
+                linear-gradient(180deg, #071327 0%, #0d1c35 50%, #050b15 100%);
+            font-family: 'Cinzel', serif;
+            color: #f5deb3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 15px;
+            overflow-x: hidden;
+        }
+
+        .sparkles::before,
+        .sparkles::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, rgba(255,215,0,.8) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255,215,0,.6) 2px, transparent 2px);
+            background-size: 180px 180px, 260px 260px, 320px 320px;
+            animation: twinkle 12s linear infinite;
+            opacity: .35;
+        }
+
+        .sparkles::after {
+            animation-duration: 20s;
+            opacity: .2;
+        }
+
+        @keyframes twinkle {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-100px); }
+        }
+
+        .invitation {
+            width: 100%;
+            max-width: 850px;
+            background: rgba(7, 16, 32, 0.95);
+            border: 3px solid #caa35f;
+            border-radius: 24px;
+            padding: 50px 40px;
+            position: relative;
+            box-shadow:
+                0 0 40px rgba(255, 215, 0, 0.18),
+                inset 0 0 30px rgba(255,255,255,0.03);
+            overflow: hidden;
+        }
+
+        .invitation::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(202,163,95,.5);
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .top-glow {
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,215,0,.25), transparent 70%);
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .symbol {
+            font-size: 110px;
+            line-height: 1;
+            color: #f3d08b;
+            text-shadow: 0 0 20px rgba(255,215,0,.45);
+            margin-bottom: 10px;
+        }
+
+        .small-title {
+            font-size: 20px;
+            letter-spacing: 3px;
+            color: #d7b06a;
+            margin-bottom: 10px;
+        }
+
+        .main-title {
+            font-size: 58px;
+            line-height: 1.1;
+            font-weight: 800;
+            color: #f7e0ac;
+            text-shadow: 0 0 15px rgba(255,215,0,.15);
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            font-size: 22px;
+            color: #d4bc8d;
+        }
+
+        .banner {
+            display: inline-block;
+            margin: 30px auto 20px;
+            background: linear-gradient(135deg, #8b5e21, #d9b06d, #8b5e21);
+            color: #1a1207;
+            padding: 12px 40px;
+            border-radius: 999px;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0,0,0,.4);
+        }
+
+        .message {
+            margin: 25px auto;
+            max-width: 650px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 28px;
+            color: #fff3d4;
+            line-height: 1.6;
+        }
+
+        .date-box {
+            margin: 35px auto;
+            padding: 25px;
+            border: 2px solid rgba(212,188,141,.5);
+            border-radius: 18px;
+            background: rgba(255,255,255,.03);
+            max-width: 620px;
+        }
+
+        .date {
+            font-size: 58px;
+            color: #ffdd96;
+            font-weight: 700;
+        }
+
+        .place {
+            margin-top: 10px;
+            font-size: 30px;
+            color: #ffffff;
+        }
+
+        .address {
+            margin-top: 20px;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #d7c9aa;
+        }
+
+        .price {
+            margin: 40px auto 20px;
+            display: inline-block;
+            border: 2px solid #caa35f;
+            border-radius: 12px;
+            padding: 14px 40px;
+            font-size: 38px;
+            color: #ffdd96;
+            background: rgba(255,255,255,.04);
+        }
+
+        .raffle {
+            margin-top: 20px;
+            font-size: 26px;
+            color: #fff0c7;
+        }
+
+        .raffle strong {
+            display: block;
+            font-size: 52px;
+            margin-top: 8px;
+            color: #ffe39d;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,.12);
+            font-size: 18px;
+            line-height: 1.8;
+            color: #cab690;
+        }
+
+        .button-area {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            background: linear-gradient(135deg, #c79a4f, #f2d18c);
+            color: #16110a;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: .3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .countdown {
+            margin-top: 35px;
+            font-size: 22px;
+            color: #f7deb2;
+        }
+
+        #timer {
+            margin-top: 12px;
+            font-size: 42px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            color: #ffde95;
+        }
+
+        @media (max-width: 768px) {
+            .invitation {
+                padding: 35px 20px;
+            }
+
+            .symbol {
+                font-size: 80px;
+            }
+
+            .main-title {
+                font-size: 38px;
+            }
+
+            .message {
+                font-size: 22px;
+            }
+
+            .date {
+                font-size: 42px;
+            }
+
+            .place {
+                font-size: 24px;
+            }
+
+            .raffle strong {
+                font-size: 38px;
+            }
+
+            #timer {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sparkles"></div>
+
+    <div class="invitation">
+        <div class="top-glow"></div>
+
+        <div class="content">
+            <div class="symbol">△ ⌖ ✦</div>
+
+            <div class="small-title">BEN LEAL CONST Y</div>
+
+            <h1 class="main-title">
+                BEN LEAL CONST Y
+            </h1>
+
+            <div class="subtitle">
+                de Francisco C. Rodríguez
+            </div>
+
+            <div class="banner">ANIVERSARIO</div>
+
+            <div class="message">
+                Invitamos cordialmente a nuestro aniversario fraternal.
+                Una noche de hermandad, celebración y tradición.
+            </div>
+
+            <div class="date-box">
+                <div class="date">18 DE JULIO</div>
+
+                <div class="place">SALÓN COLIBRÍ</div>
+
+                <div class="address">
+                    Av. de Las Torres #111<br>
+                    Tierra Blanca, El Potosí<br>
+                    Contraesquina de La Politécnica y La Canaco<br>
+                    Viniendo por Coronel Romero
+                </div>
+            </div>
+
+            <div class="price">$500.00 MXN</div>
+
+            <div class="raffle">
+                El boleto participa en una
+                <strong>RIFA SORPRESA</strong>
+            </div>
+
+            <div class="countdown">
+                Faltan para el evento:
+                <div id="timer">00 : 00 : 00 : 00</div>
+            </div>
+
+            <div class="button-area">
+                <a class="btn" href="https://wa.me/5210000000000" target="_blank">
+                    Confirmar Asistencia
+                </a>
+
+                <a class="btn" href="#" onclick="window.print()">
+                    Descargar Invitación
+                </a>
+            </div>
+
+            <div class="footer">
+                Resp.· Log.· Simb.· Fe y Esperanza N° 1<br>
+                Av. de Las Torres #111 · Tierra Blanca · El Potosí
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const eventDate = new Date('2026-07-18T20:00:00').getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance <= 0) {
+                document.getElementById('timer').innerHTML = '¡El evento ha comenzado!';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').innerHTML =
+                `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+        };
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
