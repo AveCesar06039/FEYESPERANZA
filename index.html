@@ -1,746 +1,1173 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invitación · Fe y Esperanza N°1</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>Invitación · Fe y Esperanza N°1</title>
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-        body{
-            min-height:100vh;
+<link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-            background:
-                radial-gradient(circle at top, rgba(255,215,120,0.18), transparent 30%),
-                linear-gradient(180deg, #071327 0%, #0d1c35 50%, #050b15 100%);
+<style>
 
-            font-family:'Cinzel', serif;
-            color:#f5deb3;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            padding:40px 15px;
-            overflow-x:hidden;
-        }
-
-        /* =========================
-           EFECTO ESTRELLAS
-        ========================= */
-
-        .sparkles::before,
-        .sparkles::after{
-            content:'';
-            position:fixed;
-            inset:0;
-            pointer-events:none;
-
-            background-image:
-                radial-gradient(circle, rgba(255,215,0,.8) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255,215,0,.6) 2px, transparent 2px);
-
-            background-size:180px 180px, 260px 260px, 320px 320px;
-
-            animation:twinkle 12s linear infinite;
-            opacity:.35;
-        }
-
-        .sparkles::after{
-            animation-duration:20s;
-            opacity:.2;
-        }
-
-        @keyframes twinkle{
-            from{
-                transform:translateY(0px);
-            }
-            to{
-                transform:translateY(-100px);
-            }
-        }
-
-        /* =========================
-           CONTENEDOR
-        ========================= */
-
-        .invitation{
-            width:100%;
-            max-width:900px;
-
-            background:rgba(7,16,32,0.95);
-
-            border:3px solid #caa35f;
-            border-radius:24px;
-
-            padding:50px 40px;
-
-            position:relative;
-
-            box-shadow:
-                0 0 40px rgba(255,215,0,0.18),
-                inset 0 0 30px rgba(255,255,255,0.03);
-
-            overflow:hidden;
-        }
-
-        .invitation::before{
-            content:'';
-            position:absolute;
-            inset:12px;
-
-            border:1px solid rgba(202,163,95,.5);
-            border-radius:18px;
-
-            pointer-events:none;
-        }
-
-        .top-glow{
-            position:absolute;
-            top:-120px;
-            left:50%;
-            transform:translateX(-50%);
-
-            width:400px;
-            height:400px;
-
-            background:radial-gradient(circle, rgba(255,215,0,.25), transparent 70%);
-            z-index:0;
-        }
-
-        .content{
-            position:relative;
-            z-index:1;
-            text-align:center;
-        }
-
-        /* =========================
-           LOGO
-        ========================= */
-
-        .logo{
-            width:150px;
-            margin-bottom:20px;
-
-            filter:drop-shadow(0 0 15px rgba(255,215,0,.3));
-        }
-
-        /* =========================
-           TEXTOS
-        ========================= */
-
-        .small-title{
-            font-size:18px;
-            letter-spacing:3px;
-            color:#d7b06a;
-            margin-bottom:12px;
-        }
-
-        .main-title{
-            font-size:52px;
-            line-height:1.2;
-            font-weight:800;
-
-            color:#f7e0ac;
-
-            text-shadow:0 0 15px rgba(255,215,0,.15);
-        }
-
-        .subtitle{
-            margin-top:14px;
-            font-size:22px;
-            color:#d4bc8d;
-        }
-
-        /* =========================
-           BANNER
-        ========================= */
-
-        .banner{
-            display:inline-block;
-
-            margin:35px auto 20px;
-
-            background:linear-gradient(135deg, #8b5e21, #d9b06d, #8b5e21);
-
-            color:#1a1207;
-
-            padding:14px 40px;
-
-            border-radius:999px;
-
-            font-size:28px;
-            font-weight:bold;
-
-            box-shadow:0 10px 20px rgba(0,0,0,.4);
-        }
-
-        /* =========================
-           MENSAJE
-        ========================= */
-
-        .message{
-            margin:25px auto;
-            max-width:680px;
-
-            font-family:'Playfair Display', serif;
-            font-style:italic;
-
-            font-size:28px;
-            line-height:1.7;
-
-            color:#fff3d4;
-        }
-
-        /* =========================
-           FECHA CON IMAGEN
-        ========================= */
-
-        .date-box{
-            margin:35px auto;
-            padding:20px;
-
-            display:flex;
-            align-items:center;
-            gap:25px;
-
-            border:1px solid #d4af37;
-            border-radius:18px;
-
-            background:rgba(255,255,255,0.05);
-
-            max-width:700px;
-        }
-
-        .image-side img{
-            width:240px;
-            height:180px;
-
-            object-fit:cover;
-
-            border-radius:12px;
-            border:3px solid #d4af37;
-
-            box-shadow:0 0 20px rgba(255,215,0,.15);
-        }
-
-        .text-side{
-            text-align:left;
-            color:white;
-        }
-
-        .text-side .date{
-            font-size:30px;
-            font-weight:bold;
-
-            color:#ffdd96;
-
-            margin-bottom:12px;
-            line-height:1.4;
-        }
-
-        .text-side .place{
-            font-size:26px;
-            letter-spacing:2px;
-
-            color:#d4af37;
-        }
-
-        /* =========================
-           DIRECCIÓN
-        ========================= */
-
-        .address-box{
-            margin:35px auto;
-
-            padding:30px;
-
-            border:2px solid rgba(212,188,141,.5);
-            border-radius:18px;
-
-            background:rgba(255,255,255,.03);
-
-            max-width:700px;
-        }
-
-        .address-date{
-            font-size:48px;
-            color:#ffdd96;
-            font-weight:700;
-        }
-
-        .address-place{
-            margin-top:10px;
-
-            font-size:32px;
-            color:#ffffff;
-        }
-
-        .address{
-            margin-top:20px;
-
-            font-size:20px;
-            line-height:1.8;
-
-            color:#d7c9aa;
-        }
-
-        /* =========================
-           PRECIO
-        ========================= */
-
-        .price{
-            margin:40px auto 20px;
-
-            display:inline-block;
-
-            border:2px solid #caa35f;
-            border-radius:12px;
-
-            padding:14px 40px;
-
-            font-size:38px;
-            color:#ffdd96;
-
-            background:rgba(255,255,255,.04);
-        }
-
-        /* =========================
-           RIFA
-        ========================= */
-
-        .raffle{
-            margin-top:20px;
-            font-size:26px;
-            color:#fff0c7;
-        }
-
-        .raffle strong{
-            display:block;
-
-            font-size:52px;
-            margin-top:8px;
-
-            color:#ffe39d;
-        }
-
-        /* =========================
-           BOTONES
-        ========================= */
-
-        .button-area{
-            margin-top:40px;
-
-            display:flex;
-            justify-content:center;
-            gap:15px;
-            flex-wrap:wrap;
-        }
-
-        .btn{
-            text-decoration:none;
-
-            background:linear-gradient(135deg, #c79a4f, #f2d18c);
-
-            color:#16110a;
-
-            padding:14px 28px;
-
-            border-radius:12px;
-
-            font-weight:bold;
-
-            transition:.3s ease;
-
-            box-shadow:0 8px 20px rgba(0,0,0,.3);
-        }
-
-        .btn:hover{
-            transform:translateY(-3px) scale(1.02);
-        }
-
-        /* =========================
-           CONTADOR
-        ========================= */
-
-        .countdown{
-            margin-top:35px;
-            font-size:22px;
-            color:#f7deb2;
-        }
-
-        #timer{
-            margin-top:12px;
-
-            font-size:42px;
-            font-weight:bold;
-            letter-spacing:4px;
-
-            color:#ffde95;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        .footer{
-            margin-top:50px;
-            padding-top:25px;
-
-            border-top:1px solid rgba(255,255,255,.12);
-
-            font-size:18px;
-            line-height:1.8;
-
-            color:#cab690;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width:768px){
-
-            .invitation{
-                padding:35px 20px;
-            }
-
-            .logo{
-                width:110px;
-            }
-
-            .main-title{
-                font-size:36px;
-            }
-
-            .message{
-                font-size:22px;
-            }
-
-            .date-box{
-                flex-direction:column;
-                text-align:center;
-            }
-
-            .image-side img{
-                width:100%;
-                max-width:320px;
-                height:auto;
-            }
-
-            .text-side{
-                text-align:center;
-            }
-
-            .text-side .date{
-                font-size:24px;
-            }
-
-            .text-side .place{
-                font-size:20px;
-            }
-
-            .address-date{
-                font-size:38px;
-            }
-
-            .address-place{
-                font-size:26px;
-            }
-
-            .raffle strong{
-                font-size:38px;
-            }
-
-            #timer{
-                font-size:28px;
-            }
-        }
-
-
-        .address-box{
-    margin:35px auto;
-    padding:20px;
-
-    display:flex;
-    align-items:center;
-    gap:25px;
-
-    border:2px solid rgba(212,188,141,.5);
-    border-radius:18px;
-
-    background:rgba(255,255,255,.03);
-
-    max-width:760px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+        radial-gradient(circle at top, rgba(255,215,120,0.18), transparent 30%),
+        linear-gradient(180deg, #071327 0%, #0d1c35 50%, #050b15 100%);
+
+    font-family:'Cinzel', serif;
+
+    color:#f5deb3;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+    padding:40px 15px;
+}
+
+/* =========================================
+   ESTRELLAS
+========================================= */
+
+.sparkles::before,
+.sparkles::after{
+
+    content:'';
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+        radial-gradient(circle, rgba(255,215,0,.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,215,0,.5) 2px, transparent 2px);
+
+    background-size:
+        180px 180px,
+        260px 260px,
+        320px 320px;
+
+    animation:twinkle 15s linear infinite;
+
+    opacity:.35;
+}
+
+.sparkles::after{
+    animation-duration:25s;
+    opacity:.15;
+}
+
+@keyframes twinkle{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-120px);
+    }
+}
+
+/* =========================================
+   PARTICULAS
+========================================= */
+
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.particles::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:200%;
+    height:200%;
+
+    background-image:
+        radial-gradient(circle, rgba(255,215,0,.15) 1px, transparent 1px);
+
+    background-size:90px 90px;
+
+    animation:particlesMove 60s linear infinite;
+}
+
+@keyframes particlesMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-400px);
+    }
+}
+
+/* =========================================
+   CONTENEDOR
+========================================= */
+
+.invitation{
+
+    width:100%;
+    max-width:980px;
+
+    margin:auto;
+
+    background:rgba(7,16,32,0.94);
+
+    border:3px solid #caa35f;
+
+    border-radius:28px;
+
+    padding:60px 45px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 0 50px rgba(255,215,0,.15),
+        inset 0 0 40px rgba(255,255,255,.03);
+}
+
+.invitation::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:12px;
+
+    border:1px solid rgba(202,163,95,.4);
+
+    border-radius:20px;
+
+    pointer-events:none;
+}
+
+.top-glow{
+
+    position:absolute;
+
+    top:-160px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:500px;
+    height:500px;
+
+    background:
+        radial-gradient(circle, rgba(255,215,0,.20), transparent 70%);
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+
+.fade-up{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    animation:fadeUp 1.3s ease forwards;
+}
+
+.fade-delay-1{ animation-delay:.2s; }
+.fade-delay-2{ animation-delay:.5s; }
+.fade-delay-3{ animation-delay:.8s; }
+.fade-delay-4{ animation-delay:1.1s; }
+
+@keyframes fadeUp{
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo{
+
+    width:170px;
+
+    margin-bottom:25px;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255,215,0,.25))
+        drop-shadow(0 0 30px rgba(255,215,0,.18));
+
+    animation:
+        logoFloat 5s ease-in-out infinite,
+        logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+
+    0%,100%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes logoGlow{
+
+    0%,100%{
+
+        filter:
+            drop-shadow(0 0 10px rgba(255,215,0,.25))
+            drop-shadow(0 0 30px rgba(255,215,0,.18));
+    }
+
+    50%{
+
+        filter:
+            drop-shadow(0 0 18px rgba(255,215,0,.45))
+            drop-shadow(0 0 45px rgba(255,215,0,.35));
+    }
+}
+
+/* =========================================
+   TEXTOS
+========================================= */
+
+.small-title{
+
+    font-size:18px;
+
+    letter-spacing:4px;
+
+    color:#d7b06a;
+
+    margin-bottom:15px;
+}
+
+.main-title{
+
+    font-size:58px;
+
+    line-height:1.2;
+
+    font-weight:800;
+
+    color:#f7e0ac;
+
+    text-shadow:0 0 15px rgba(255,215,0,.15);
+}
+
+.banner{
+
+    display:inline-block;
+
+    margin:40px auto 25px;
+
+    background:
+        linear-gradient(135deg, #8b5e21, #d9b06d, #8b5e21);
+
+    color:#1a1207;
+
+    padding:16px 42px;
+
+    border-radius:999px;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.4);
+}
+
+.message{
+
+    margin:30px auto;
+
+    max-width:720px;
+
+    font-family:'Playfair Display', serif;
+
+    font-style:italic;
+
+    font-size:30px;
+
+    line-height:1.8;
+
+    color:#fff3d4;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.date-box,
+.address-box{
+
+    margin:40px auto;
+
+    padding:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,215,0,.2);
+
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,.02),
+        0 0 20px rgba(255,215,0,.05);
+
+    transition:.4s;
+}
+
+.date-box:hover,
+.address-box:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 0 30px rgba(255,215,0,.10);
+}
+
+.image-side img,
 .address-image img{
+
     width:260px;
     height:220px;
 
     object-fit:cover;
 
-    border-radius:12px;
+    border-radius:14px;
+
     border:3px solid #d4af37;
 
-    box-shadow:0 0 20px rgba(255,215,0,.15);
+    box-shadow:
+        0 0 20px rgba(255,215,0,.15);
 }
 
+.text-side,
 .address-content{
     text-align:left;
 }
 
-.address-date{
-    font-size:42px;
+.date{
+
+    font-size:32px;
+
+    font-weight:bold;
+
     color:#ffdd96;
+
+    line-height:1.5;
+
+    margin-bottom:15px;
+}
+
+.place{
+
+    font-size:28px;
+
+    letter-spacing:2px;
+
+    color:#d4af37;
+}
+
+.address-date{
+
+    font-size:38px;
+
+    color:#ffdd96;
+
     font-weight:700;
+
+    line-height:1.4;
 }
 
 .address-place{
-    margin-top:10px;
 
-    font-size:30px;
-    color:#ffffff;
+    margin-top:12px;
 
-    letter-spacing:2px;
+    font-size:32px;
+
+    color:white;
 }
 
 .address{
-    margin-top:18px;
 
-    font-size:18px;
-    line-height:1.8;
+    margin-top:20px;
+
+    font-size:19px;
+
+    line-height:1.9;
 
     color:#d7c9aa;
 }
 
-/* =========================
+/* =========================================
+   BOTONES
+========================================= */
+
+.btn-custom{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:inline-block;
+
+    text-decoration:none !important;
+
+    background:
+        linear-gradient(135deg, #c79a4f, #f2d18c);
+
+    color:#16110a !important;
+
+    padding:14px 30px;
+
+    border-radius:14px;
+
+    font-weight:bold;
+
+    margin-top:20px;
+
+    transition:.3s ease;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+.btn-custom:hover{
+
+    transform:translateY(-3px) scale(1.02);
+}
+
+.btn-custom::before{
+
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,.4),
+            transparent
+        );
+
+    transition:.8s;
+}
+
+.btn-custom:hover::before{
+    left:100%;
+}
+
+/* =========================================
+   PRECIO
+========================================= */
+
+.price{
+
+    margin:50px auto 20px;
+
+    display:inline-block;
+
+    border:2px solid #caa35f;
+
+    border-radius:14px;
+
+    padding:16px 45px;
+
+    font-size:42px;
+
+    color:#ffdd96;
+
+    background:rgba(255,255,255,.04);
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,.08);
+}
+
+/* =========================================
+   RIFA
+========================================= */
+
+.raffle{
+
+    margin-top:20px;
+
+    font-size:28px;
+
+    color:#fff0c7;
+}
+
+.raffle strong{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:56px;
+
+    color:#ffe39d;
+}
+
+/* =========================================
+   CONTADOR
+========================================= */
+
+.countdown{
+
+    margin-top:45px;
+
+    font-size:24px;
+
+    color:#f7deb2;
+}
+
+#timer{
+
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+.time-box{
+
+    min-width:100px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,215,0,.2);
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,.02),
+        0 0 20px rgba(255,215,0,.06);
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:#ffde95;
+}
+
+.time-box small{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:14px;
+
+    color:#e7d2a2;
+}
+
+/* =========================================
+   MODAL
+========================================= */
+
+.orden-modal .modal-content{
+
+    background:
+        linear-gradient(145deg,#111,#1c1c1c);
+
+    border:2px solid #c8a96b;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    color:#f5f5f5;
+
+    box-shadow:0 0 35px rgba(0,0,0,.6);
+}
+
+.orden-modal .modal-header{
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    background:
+        linear-gradient(to right,#000,#1a1a1a);
+
+    text-align:center;
+
+    display:block;
+
+    position:relative;
+
+    padding:30px;
+}
+
+.orden-modal .modal-title{
+
+    font-size:32px;
+
+    letter-spacing:4px;
+
+    color:#d4af37;
+
+    font-weight:bold;
+}
+
+.orden-modal .close{
+
+    position:absolute;
+
+    top:15px;
+    right:20px;
+
+    color:white;
+
+    opacity:1;
+
+    font-size:30px;
+}
+
+.modal-body{
+
+    padding:30px;
+
+    background:
+        radial-gradient(circle at top,
+        rgba(212,175,55,.08),
+        transparent 40%);
+}
+
+.orden-banner{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.orden-banner img{
+
+    width:500px;
+    max-width:100%;
+
+    border-radius:12px;
+
+    border:3px solid #d4af37;
+}
+
+.orden-divider{
+
+    width:120px;
+    height:2px;
+
+    background:#d4af37;
+
+    margin:25px auto;
+}
+
+.orden-table{
+    width:100%;
+}
+
+.orden-table thead th{
+
+    background:#d4af37;
+
+    color:#111;
+
+    border:none;
+
+    padding:14px;
+}
+
+.orden-table tbody tr{
+
+    background:rgba(255,255,255,.04);
+
+    transition:.3s;
+}
+
+.orden-table tbody tr:hover{
+
+    transform:scale(1.01);
+
+    background:rgba(212,175,55,.08);
+}
+
+.orden-table td{
+
+    border-top:none !important;
+
+    padding:14px;
+
+    color:white;
+}
+
+.grado{
+    color:#d4af37;
+    font-weight:bold;
+}
+
+.cargo{
+    color:#ddd;
+    font-style:italic;
+}
+
+/* =========================================
+   MODAL BIENVENIDA
+========================================= */
+
+#welcomeModal .modal-content{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,17,17,.96),
+            rgba(30,30,30,.96)
+        );
+
+    border:2px solid #d4af37;
+
+    border-radius:22px;
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+        0 0 30px rgba(212,175,55,.2),
+        0 0 80px rgba(0,0,0,.8);
+}
+
+/* =========================================
    RESPONSIVE
-========================= */
+========================================= */
 
-@media (max-width:768px){
+@media(max-width:768px){
 
+    .invitation{
+        padding:35px 20px;
+    }
+
+    .main-title{
+        font-size:36px;
+    }
+
+    .message{
+        font-size:22px;
+    }
+
+    .date-box,
     .address-box{
+
         flex-direction:column;
+
         text-align:center;
     }
 
+    .image-side img,
     .address-image img{
+
         width:100%;
         max-width:320px;
+
         height:auto;
     }
 
+    .text-side,
     .address-content{
         text-align:center;
     }
 
+    .raffle strong{
+        font-size:40px;
+    }
+
     .address-date{
-        font-size:34px;
+        font-size:28px;
     }
 
     .address-place{
-        font-size:24px;
-    }
-
-    .address{
-        font-size:16px;
+        font-size:26px;
     }
 }
 
-    </style>
+</style>
 </head>
 
 <body>
 
-    <div class="sparkles"></div>
+<div class="sparkles"></div>
+<div class="particles"></div>
 
-    <div class="invitation">
+<div class="invitation">
 
-        <div class="top-glow"></div>
+<div class="top-glow"></div>
 
-        <div class="content">
+<div class="content">
 
-            <img class="logo" src="img/logo_masonico.png" alt="Logo">
+<img class="logo" src="img/logo_masonico.png" alt="Logo">
 
-            <div class="small-title">
-                BENEM∴ LEAL∴ CONST∴ CENT∴ Y FUND∴
-            </div>
+<div class="small-title fade-up fade-delay-1">
+BENEM∴ LEAL∴ CONST∴ CENT∴ Y FUND∴
+</div>
 
-            <h1 class="main-title">
-                Resp∴ Log∴ Simb∴ “FE Y ESPERANZA N°1”
-            </h1>
+<h1 class="main-title fade-up fade-delay-1">
+Resp∴ Log∴ Simb∴ “FE Y ESPERANZA N°1” De Francisco C. Rodríguez
+</h1>
 
-            <div class="subtitle">
-                Or∴ de El Potosí
-            </div>
+<div class="banner fade-up fade-delay-2">
+✦ LVIII ANIVERSARIO ✦
+</div>
 
-            <div class="banner">
-                ✦ LVIII ANIVERSARIO ✦
-            </div>
+<div class="message fade-up fade-delay-3">
+Te invitamos fraternalmente a nuestro 158 Aniversario.
+Una noche de hermandad, celebración y tradición.
+</div>
 
-            <div class="message">
-                Invitamos cordialmente a nuestro aniversario fraternal.
-                Una noche de hermandad, celebración y tradición.
-            </div>
+<!-- TENIDA -->
 
-            <!-- FECHA + IMAGEN -->
+<div class="date-box fade-up fade-delay-4">
 
-            <div class="date-box">
+<div class="image-side">
+<img src="img/templo.jpeg" alt="Templo">
+</div>
 
-                <div class="image-side">
-                    <img src="img/templo.jpeg" alt="Templo">
-                </div>
+<div class="text-side">
 
-                <div class="text-side">
+<div class="date">
+Tenida de Aniversario a las 19:00 hrs.
+</div>
 
-                    <div class="date">
-                        13 DE JULIO · A PARTIR DE LAS 7:00 PM
-                    </div>
+<div class="place">
+Templo 1 (solo Q∴ Q∴ H∴ H∴)
+</div>
 
-                    <div class="place">
-                        TEMPLO 1
-                    </div>
+<button type="button"
+        class="btn-custom"
+        data-toggle="modal"
+        data-target="#modalMiembros">
 
-                </div>
+Conoce sus miembros
 
-            </div>
+</button>
 
-            <!-- UBICACIÓN -->
+</div>
+</div>
 
-          <div class="address-box">
+<!-- COMIDA -->
 
-    <div class="address-image">
-        <img src="img/salon_colibri.png" alt="Salón Colibrí">
-    </div>
+<div class="address-box fade-up fade-delay-4">
 
-    <div class="address-content">
+<div class="address-image">
+<img src="img/salon_colibri.png" alt="Salón Colibrí">
+</div>
 
-        <div class="address-date">
-            18 DE JULIO
-        </div>
+<div class="address-content">
 
-        <div class="address-place">
-            SALÓN COLIBRÍ
-        </div>
+<div class="address-date">
+Sábado 18/Julio/2026 Comida fraternal a partir de las 15:00 hrs.
+</div>
 
-        <div class="address">
-            Av. de Las Torres #111<br>
-            Tierra Blanca, El Potosí<br><br>
+<div class="address-place">
+SALÓN COLIBRÍ
+</div>
 
-            Contraesquina de La Politécnica y La Canaco<br>
-            Viniendo por Coronel Romero
-        </div>
+<div class="address">
+Av. de Las Torres #111<br>
+Tierra Blanca, El Potosí<br><br>
 
-    </div>
+Contraesquina de La Politécnica y La Canaco<br>
+Viniendo por Coronel Romero
+</div>
+
+</div>
+</div>
+
+<div class="price fade-up">
+$500.00 MXN
+</div>
+
+<div class="raffle fade-up">
+El boleto participa en una
+<strong>RIFA SORPRESA</strong>
+</div>
+
+<div class="countdown fade-up">
+
+Faltan:
+
+<div id="timer"></div>
 
 </div>
 
-            <!-- PRECIO -->
+</div>
+</div>
 
-            <div class="price">
-                $500.00 MXN
-            </div>
+<!-- MODAL MIEMBROS -->
 
-            <!-- RIFA -->
+<div class="modal fade orden-modal"
+     id="modalMiembros"
+     tabindex="-1">
 
-            <div class="raffle">
-                El boleto participa en una
-                <strong>RIFA SORPRESA</strong>
-            </div>
+<div class="modal-dialog modal-xl modal-dialog-scrollable">
 
-            <!-- CONTADOR -->
+<div class="modal-content">
 
-            <div class="countdown">
-                Faltan para el evento:
+<div class="modal-header">
 
-                <div id="timer">
-                    00 : 00 : 00 : 00
-                </div>
-            </div>
+<button type="button"
+        class="close"
+        data-dismiss="modal">
 
-            <!-- BOTONES -->
+<span>&times;</span>
 
-            <div class="button-area">
+</button>
 
-                <a class="btn"
-                   href="https://wa.me/5210000000000"
-                   target="_blank">
+<h2 class="modal-title">
+CUADRO LOGIAL
+</h2>
+<h3 class="modal-title">
+S∴ F∴ U∴
+</h3>
 
-                    Confirmar Asistencia
+</div>
 
-                </a>
+<div class="modal-body">
 
-                <a class="btn"
-                   href="#"
-                   onclick="window.print()">
+<div class="orden-banner">
 
-                    Descargar Invitación
+<img src="img/cuadro.png">
 
-                </a>
+<div class="orden-divider"></div>
 
-            </div>
+</div>
 
-            <!-- FOOTER -->
+<table class="table orden-table">
 
-            <div class="footer">
-                Resp∴ Log∴ Simb∴ Fe y Esperanza N°1<br>
-                Av. de Las Torres #111 · Tierra Blanca · El Potosí
-            </div>
+<thead>
+<tr>
+<th>#</th>
+<th>Grado</th>
+<th>Nombre</th>
+<th>Cargo</th>
+</tr>
+</thead>
 
-        </div>
+<tbody> <tr> <td>1</td> <td class="grado">M.·. M.·.</td> <td>Rutilo Eduardo Rodríguez Monter.</td> <td class="cargo">V.·. M.·.</td> </tr> <tr> <td>2</td> <td class="grado">M.·. M.·.</td> <td>Alejandro Gallegos Moreno.</td> <td class="cargo">PAST.·. M.·. PRIM.·. DIAC.·.</td> </tr> <tr> <td>3</td> <td class="grado">M.·. M.·.</td> <td>Javier Flores Aranda.</td> <td class="cargo">PRIM.·. VIG .·.</td> </tr> <tr> <td>4</td> <td class="grado">M.·. M.·.</td> <td>José Jacobo Handall Díaz.</td> <td class="cargo">SEG.·. VIG.·.</td> </tr> <tr> <td>5</td> <td class="grado">M.·. M.·.</td> <td>Jesús Osmín Acosta Ruiz.</td> <td class="cargo">SEG.·. DIAC.·.</td> </tr> <tr> <td>6</td> <td class="grado">M.·. M.·.</td> <td>Teófilo Martínez Rosas.</td> <td class="cargo">ORAD.·.</td> </tr> <tr> <td>7</td> <td class="grado">M.·. M.·.</td> <td>Luis Manuel Hernández García.</td> <td class="cargo">SECR.·.</td> </tr> <tr> <td>8</td> <td class="grado">M.·. M.·.</td> <td>Luis Edmundo Duque Zavala.</td> <td class="cargo">TES.·.</td> </tr> <tr> <td>9</td> <td class="grado">M.·. M.·.</td> <td>José Alonso Ortiz Núñez.</td> <td class="cargo">HOSP.·.</td> </tr> <tr> <td>10</td> <td class="grado">M.·. M.·.</td> <td>Arturo Vázquez Gaytán</td> <td class="cargo">M.·. CER.·.</td> </tr> <tr> <td>11</td> <td class="grado">M.·. M.·.</td> <td>Martin Beltrán Saucedo.</td> <td class="cargo">PRIM .·. EXP.·.</td> </tr> <tr> <td>12</td> <td class="grado">M.·. M.·.</td> <td>Arturo Medina Hernández.</td> <td class="cargo">SEG.·. EXP.·.</td> </tr> <tr> <td>13</td> <td class="grado">M.·. M.·.</td> <td>Juan Antonio Leija Méndez.</td> <td class="cargo">PORT.·. BAND.·.</td> </tr> <tr> <td>14</td> <td class="grado">M.·. M.·.</td> <td>Juan David López Ávila.</td> <td class="cargo">GTI.·.</td> </tr> <tr> <td>15</td> <td class="grado">M.·. M.·.</td> <td>Julián Cesar Ortiz Martínez.</td> <td class="cargo">GTE.·.</td> </tr> <tr> <td>16</td> <td class="grado">C.·. M.·.</td> <td>José Guadalupe López Morin.</td> <td class="cargo">ECONOMO</td> </tr> <tr> <td>17</td> <td class="grado">A.·. M.·.</td> <td>José Issac Hernández Cervantes.</td> <td class="cargo">PORT.·. EST.·.</td> </tr> <tr> <td>18</td> <td class="grado">M.·. M.·.</td> <td>Francisco Javier Escudero Villa</td> <td class="cargo">N/A</td> </tr> <tr> <td>19</td> <td class="grado">M.·. M.·.</td> <td>Alejandro Harrel Álvarez</td> <td class="cargo">N/A</td> </tr> <tr> <td>20</td> <td class="grado">M.·. M.·.</td> <td>Alejandro Bernal Fernández</td> <td class="cargo">N/A</td> </tr> <tr> <td>21</td> <td class="grado">C.·. M.·.</td> <td>Gonzalo Torres Ramírez</td> <td class="cargo">N/A</td> </tr> <tr> <td>22</td> <td class="grado">A.·. M.·.</td> <td>Irving García Toledo</td> <td class="cargo">N/A</td> </tr> <tr> <td>23</td> <td class="grado">A.·. M.·.</td> <td>José Isidro Hernàndez Shimishu.</td> <td class="cargo">N/A</td> </tr> <tr> <td>24</td> <td class="grado">A.·. M.·.</td> <td>Julio Cesar Hernández López</td> <td class="cargo">N/A</td> </tr> <tr> <td>25</td> <td class="grado">A.·. M.·.</td> <td>José Francisco Villalpando Raga</td> <td class="cargo">N/A</td> </tr> <tr> <td>26</td> <td class="grado">A.·. M.·.</td> <td>Pedro Navarro Moncada</td> <td class="cargo">N/A</td> </tr> <tr> <td>27</td> <td class="grado">A.·. M.·.</td> <td>Alan Jesús Segura Buenrostro</td> <td class="cargo">N/A</td> </tr> </tbody>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- MODAL BIENVENIDA -->
+
+<div class="modal fade"
+     id="welcomeModal"
+     tabindex="-1"
+     data-backdrop="static"
+     data-keyboard="false">
+
+<div class="modal-dialog modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-body text-center p-5">
+
+<h1 style="color:#d4af37;letter-spacing:4px;">
+✦ Bienvenido ✦
+</h1>
+
+<p style="font-size:18px;margin-top:20px;">
+Da clic para ingresar
+</p>
+
+<button id="btnEntrar"
+        class="btn btn-warning btn-lg mt-3">
+
+Entrar
+
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- AUDIO -->
+
+<audio id="bgMusic" loop>
+<source src="Music/9.m4a" type="audio/mp4">
+</audio>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+/* =========================================
+   CONTADOR
+========================================= */
+
+const eventDate = new Date('2026-07-18T20:00:00').getTime();
+
+const updateCountdown = () => {
+
+    const now = new Date().getTime();
+
+    const distance = eventDate - now;
+
+    if(distance <= 0){
+
+        document.getElementById('timer').innerHTML =
+        '¡El evento ha comenzado!';
+
+        return;
+    }
+
+    const days =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours =
+        Math.floor((distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60));
+
+    const minutes =
+        Math.floor((distance % (1000 * 60 * 60))
+        / (1000 * 60));
+
+    const seconds =
+        Math.floor((distance % (1000 * 60))
+        / 1000);
+
+    document.getElementById('timer').innerHTML = `
+
+    <div class="time-box">
+        ${days}
+        <small>Días</small>
     </div>
 
-    <script>
+    <div class="time-box">
+        ${hours}
+        <small>Horas</small>
+    </div>
 
-        const eventDate = new Date('2026-07-18T20:00:00').getTime();
+    <div class="time-box">
+        ${minutes}
+        <small>Min</small>
+    </div>
 
-        const updateCountdown = () => {
+    <div class="time-box">
+        ${seconds}
+        <small>Seg</small>
+    </div>
+    `;
+};
 
-            const now = new Date().getTime();
-            const distance = eventDate - now;
+updateCountdown();
 
-            if(distance <= 0){
+setInterval(updateCountdown, 1000);
 
-                document.getElementById('timer').innerHTML =
-                    '¡El evento ha comenzado!';
+/* =========================================
+   MODAL + MUSICA
+========================================= */
 
-                return;
+$(document).ready(function(){
+
+    $('#welcomeModal').modal('show');
+
+});
+
+document.getElementById("btnEntrar")
+.addEventListener("click", async function(){
+
+    const music = document.getElementById("bgMusic");
+
+    try{
+
+        music.volume = 0;
+
+        await music.play();
+
+        let volume = 0;
+
+        const fade = setInterval(() => {
+
+            if(volume >= 0.4){
+
+                clearInterval(fade);
+
+            }else{
+
+                volume += 0.02;
+
+                music.volume = volume;
             }
 
-            const days =
-                Math.floor(distance / (1000 * 60 * 60 * 24));
+        }, 200);
 
-            const hours =
-                Math.floor((distance % (1000 * 60 * 60 * 24))
-                / (1000 * 60 * 60));
+    }catch(e){
 
-            const minutes =
-                Math.floor((distance % (1000 * 60 * 60))
-                / (1000 * 60));
+        console.log(e);
+    }
 
-            const seconds =
-                Math.floor((distance % (1000 * 60))
-                / 1000);
+    $('#welcomeModal').modal('hide');
 
-            document.getElementById('timer').innerHTML =
-                `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-        };
+});
 
-        updateCountdown();
-
-        setInterval(updateCountdown, 1000);
-
-    </script>
+</script>
 
 </body>
 </html>
