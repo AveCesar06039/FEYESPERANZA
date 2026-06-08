@@ -1264,6 +1264,16 @@ document.getElementById("btnEntrar")
 
 });
 
+
+function copiarCuenta() {
+  const texto = document.getElementById("cuenta").innerText;
+
+  navigator.clipboard.writeText(texto);
+
+  alert("Número de cuenta copiado ✅");
+}
+
+      
 </script>
 
 </body>
